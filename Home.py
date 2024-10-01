@@ -1,9 +1,11 @@
 import streamlit as st
+from notion_api import *
+import json
+import time
 
 st.set_page_config(
-    page_title="Home"
+    page_title = "Home"
 )
-
 
 st.write("# Welcome to Golden Formulas! 👋")
 
