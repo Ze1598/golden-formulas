@@ -18,5 +18,6 @@ st.markdown(
     Technical notes below 🗒️:
     * This web app is connected to his Notion workspace in real time meaning the content for these pages is dynamically generated via API calls
     * GitHub repository available [here](https://github.com/Ze1598/golden-formulas)
+    
 """
 )
