@@ -60,3 +60,9 @@ st.markdown(display_string)"""
     out_path = os.path.join(os.getcwd(), "pages", subpage_name)
     with open(out_path, "w") as f:
         f.write(subpage_code)
+
+todelete_pages = [page for page in local_pages if page not in pages_available]
+for page in todelete_pages:
+    subpage_name = f"{page}.py"
+    out_path = os.path.join(os.getcwd(), "pages", subpage_name)
+    os.remove(out_path)
