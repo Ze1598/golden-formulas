@@ -1,3 +1,4 @@
 .streamlit/*
 __pycache__/*
 classes/__pycache__/*
+pages/*.py
