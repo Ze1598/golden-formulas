@@ -18,7 +18,8 @@ def manage_subpages():
     # Which pages to be created
     missing_pages = [page for page in pages_available if page not in local_pages]
     for page in missing_pages:
-        subpage_code = """import streamlit as st
+        subpage_code = """
+    import streamlit as st
     from classes.SubPage import SubPage
     import os
 
