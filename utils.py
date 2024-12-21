@@ -13,7 +13,7 @@ def manage_subpages():
 
     # Which pages exist locally
     local_pages_files = os.listdir(os.path.join(os.getcwd(), "pages"))
-    local_pages = [page.replace(".py", "") for page in local_pages_files]
+    local_pages = [page.replace(".py", "") for page in local_pages_files if page != ".gitkeep"]
 
     # Which pages to be created
     missing_pages = [page for page in pages_available if page not in local_pages]
