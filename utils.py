@@ -19,28 +19,28 @@ def manage_subpages():
     missing_pages = [page for page in pages_available if page not in local_pages]
     for page in missing_pages:
         subpage_code = """
-    import streamlit as st
-    from classes.SubPage import SubPage
-    import os
+import streamlit as st
+from classes.SubPage import SubPage
+import os
 
-    # Get page name from script name
-    page_name = os.path.basename(__file__).replace(".py", "")
+# Get page name from script name
+page_name = os.path.basename(__file__).replace(".py", "")
 
-    # Start class to handle Notion connectivity and content formatting
-    sub_page = SubPage(page_name)
-    # Tidy up content for page
-    display_string = sub_page.get_formatted_bullet_list()
+# Start class to handle Notion connectivity and content formatting
+sub_page = SubPage(page_name)
+# Tidy up content for page
+display_string = sub_page.get_formatted_bullet_list()
 
-    # Streamlit page config
-    st.set_page_config(
-        page_title = sub_page.get_page_name()
-    )
+# Streamlit page config
+st.set_page_config(
+    page_title = sub_page.get_page_name()
+)
 
-    # Page header
-    st.markdown(f"# {sub_page.get_page_name()}")
+# Page header
+st.markdown(f"# {sub_page.get_page_name()}")
 
-    # Page body
-    st.markdown(display_string)"""
+# Page body
+st.markdown(display_string)"""
 
         subpage_name = f"{page}.py"
         out_path = os.path.join(os.getcwd(), "pages", subpage_name)
