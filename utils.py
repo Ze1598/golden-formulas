@@ -11,9 +11,12 @@ def manage_subpages():
     notion_api = NotionApi()
     pages_available = list(notion_api.available_child_pages.keys())
 
+    print(f"Pages available in Notion: {pages_available}")
+
     # Which pages exist locally
     local_pages_files = os.listdir(os.path.join(os.getcwd(), "pages"))
     local_pages = [page.replace(".py", "") for page in local_pages_files if page != ".gitkeep"]
+    print(f"Pages available locally: {local_pages}")
 
     # Which pages to be created
     missing_pages = [page for page in pages_available if page not in local_pages]
