@@ -1,4 +1,5 @@
 from classes.NotionApi import NotionApi
+from datetime import datetime
 import os
 
 def manage_subpages():
@@ -11,15 +12,16 @@ def manage_subpages():
     notion_api = NotionApi()
     pages_available = list(notion_api.available_child_pages.keys())
 
-    print(f"Pages available in Notion: {pages_available}")
+    print(f"{datetime.now()}: Pages available in Notion: {pages_available}")
 
     # Which pages exist locally
     local_pages_files = os.listdir(os.path.join(os.getcwd(), "pages"))
     local_pages = [page.replace(".py", "") for page in local_pages_files if page != ".gitkeep"]
-    print(f"Pages available locally: {local_pages}")
+    print(f"{datetime.now()}: Pages available locally: {local_pages}")
 
     # Which pages to be created
     missing_pages = [page for page in pages_available if page not in local_pages]
+    print(f"{datetime.now()}: Missing pages: {missing_pages}")
     for page in missing_pages:
         subpage_code = """
 import streamlit as st
@@ -52,8 +54,11 @@ st.markdown(display_string)"""
             f.write(subpage_code)
 
     todelete_pages = [page for page in local_pages if page not in pages_available]
+    print(f"{datetime.now()}: To delete pages: {todelete_pages}")
     for page in todelete_pages:
         subpage_name = f"{page}.py"
         out_path = os.path.join(os.getcwd(), "pages", subpage_name)
         print(f"Deleted page {subpage_name}")
         os.remove(out_path)
+
+    print()
